@@ -34,8 +34,6 @@ module ApplicationHelper
     # Parses JSON data into something meaningful
     public
     def ApplicationHelper.find_json inlet
-        midlet = inlet.split('=')[1..-1].join('=')[0...-1]
-        outlet = JSON.parse midlet
-        outlet
+        JSON.parse inlet.split('=')[1..-1].join('=')[0...-1]
     end
 end

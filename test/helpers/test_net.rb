@@ -5,8 +5,8 @@ class TestNet < MiniTest::Test
 
     # Runs before each test
     def setup
-        # @testurl = "https://www.instagram.com/crisjoejr/"
-        @testurl = "https://www.instagram.com/_boxofjoe_/"
+        # @testurl = "https://www.instagram.com/_boxofjoe_/"
+        @testurl = "https://www.instagram.com/crisjoejr/"
     end
 
     def test_loads_something_from_internet
@@ -24,7 +24,9 @@ class TestNet < MiniTest::Test
     def test_can_parse_stuff_from_json
         html = ApplicationHelper.load @testurl
         innies = ApplicationHelper.get_innerHTML html, 'script type="text/javascript"'
-        assert ApplicationHelper.find_json innies[1]
+        data = ApplicationHelper.find_json innies[1]
+        assert data
         # TODO Make sense of that JSON struct so we can test it.
+        File.open('./test.json', 'w') { |file| file.write(data.inspect) }
     end
 end
