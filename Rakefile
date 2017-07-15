@@ -4,3 +4,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+desc "Runs unit tests"
+task :tdd do
+    puts `rails test ./test/helpers/test_net.rb`
+end
