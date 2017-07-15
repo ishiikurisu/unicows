@@ -1,4 +1,5 @@
 require "open-uri"
+require "json"
 
 module ApplicationHelper
     # Loads the HTML content from a valid URL.
@@ -27,6 +28,14 @@ module ApplicationHelper
             end
         end
 
+        outlet
+    end
+
+    # Parses JSON data into something meaningful
+    public
+    def ApplicationHelper.find_json inlet
+        midlet = inlet.split('=')[1..-1].join('=')[0...-1]
+        outlet = JSON.parse midlet
         outlet
     end
 end
