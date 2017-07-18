@@ -5,35 +5,32 @@ class TestNet < MiniTest::Test
 
     # Runs before each test
     def setup
-        # @testurl = "https://www.instagram.com/_boxofjoe_/"
-        @testurl = "https://www.instagram.com/crisjoejr/"
+        @users = [
+            'crisjoejr',
+            '_boxofjoe_'
+        ]
     end
 
     def test_loads_something_from_internet
-        contents = ApplicationHelper.load @testurl
-        assert contents
-        assert contents.include? '<script type="text/javascript">'
+        @users.each do |user|
+            contents = ApplicationHelper.load "https://instagram.com/#{user}"
+            assert contents
+            assert contents.include? '<script type="text/javascript">'
+        end
     end
 
-    def test_can_parse_stuff_from_html
-        html = ApplicationHelper.load @testurl
-        innies = ApplicationHelper.get_innerHTML html, 'script type="text/javascript"'
-        assert_equal 4, innies.length
-    end
-
-    def test_can_parse_stuff_from_json
-        html = ApplicationHelper.load @testurl
-        innies = ApplicationHelper.get_innerHTML html, 'script type="text/javascript"'
-        data = ApplicationHelper.find_json innies[1]
-        assert data['entry_data']['ProfilePage'].length > 0
-        assert data['entry_data']['ProfilePage'][0]['user'].has_key? 'media'
-        assert data['entry_data']['ProfilePage'][0]['user']['media']['nodes'].length <= 12
-    end
-
-    def test_can_load_all_nodes_of_an_instagram_user
-        nodes = ApplicationHelper.get_instanodes '_boxofjoe_'
-        assert nodes.length <= 12
-        nodes = ApplicationHelper.get_instanodes 'crisjoejr'
-        assert nodes.length > 12
+    def test_can_load_more_than_one_page
+        @users.each do |user|
+            raw = ApplicationHelper.load "https://instagram.com/#{user}/media"
+            obj = ApplicationHelper.parse_json raw
+            assert obj['items'].length > 0
+            if obj['more_available']
+                max_id = obj['items'][-1]['id']
+                raw = ApplicationHelper.load "https://instagram.com/#{user}/media/?max_id=#{max_id}"
+                obj = ApplicationHelper.parse_json raw
+                assert max_id != obj['items'][0]['id']
+                assert obj['items'].length > 0
+            end
+        end
     end
 end
