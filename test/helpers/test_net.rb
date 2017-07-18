@@ -25,8 +25,8 @@ class TestNet < MiniTest::Test
         html = ApplicationHelper.load @testurl
         innies = ApplicationHelper.get_innerHTML html, 'script type="text/javascript"'
         data = ApplicationHelper.find_json innies[1]
-        assert data
-        # TODO Make sense of that JSON struct so we can test it.
-        File.open('./test.json', 'w') { |file| file.write(data.inspect) }
+        assert data['entry_data']['ProfilePage'].length > 0
+        assert data['entry_data']['ProfilePage'][0]['user'].has_key? 'media'
+        assert data['entry_data']['ProfilePage'][0]['user']['media']['nodes'].length <= 12
     end
 end

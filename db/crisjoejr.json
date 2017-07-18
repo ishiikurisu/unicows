@@ -15,8 +15,7 @@
                     "country_block"=>false,
                     "external_url"=>nil,
                     "external_url_linkshimmed"=>nil,
-                    "followed_by"=>{"count"=>167
-                },
+                    "followed_by"=>{"count"=>167},
                 "followed_by_viewer"=>false,
                 "follows"=>{"count"=>337},
                 "follows_viewer"=>false,
