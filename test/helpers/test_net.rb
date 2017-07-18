@@ -29,4 +29,11 @@ class TestNet < MiniTest::Test
         assert data['entry_data']['ProfilePage'][0]['user'].has_key? 'media'
         assert data['entry_data']['ProfilePage'][0]['user']['media']['nodes'].length <= 12
     end
+
+    def test_can_load_all_nodes_of_an_instagram_user
+        nodes = ApplicationHelper.get_instanodes '_boxofjoe_'
+        assert nodes.length <= 12
+        nodes = ApplicationHelper.get_instanodes 'crisjoejr'
+        assert nodes.length > 12
+    end
 end

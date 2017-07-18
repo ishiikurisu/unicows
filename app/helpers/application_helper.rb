@@ -36,4 +36,14 @@ module ApplicationHelper
     def ApplicationHelper.find_json inlet
         JSON.parse inlet.split('=')[1..-1].join('=')[0...-1]
     end
+
+    # Gets all image nodes from a Instagram user
+    public
+    def ApplicationHelper.get_instanodes user
+        # TODO Load all nodes from instagram
+        html = ApplicationHelper.load "https://www.instagram.com/#{user}/"
+        innies = ApplicationHelper.get_innerHTML html, 'script type="text/javascript"'
+        data = ApplicationHelper.find_json innies[1]
+        return data['entry_data']['ProfilePage'][0]['user']['media']['nodes']
+    end
 end
