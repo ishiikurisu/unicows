@@ -7,7 +7,7 @@ The site for the Unicows store.
 Run
 
 ```
-rake go
+rails server
 ```
 
-To run it using Unicorn.
+To run it.
