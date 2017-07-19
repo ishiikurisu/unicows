@@ -1,9 +1,8 @@
 require "minitest/autorun"
-require "./app/helpers/application_helper"
-require "./app/models/Image"
+require_relative "../../app/helpers/application_helper"
+require_relative "../../app/models/Image"
 
 class TestImage < MiniTest::Test
-
     # Runs before each test
     def setup
         @users = [

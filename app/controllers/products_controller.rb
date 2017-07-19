@@ -1,5 +1,5 @@
-require './app/helpers/application_helper.rb'
-require './app/models/image.rb'
+require_relative '../helpers/application_helper.rb'
+require_relative '../models/image.rb'
 
 class ProductsController < ApplicationController
     attr_reader :raw

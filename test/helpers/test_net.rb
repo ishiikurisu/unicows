@@ -1,8 +1,7 @@
 require "minitest/autorun"
-require "./app/helpers/application_helper"
+require_relative '../../app/helpers/application_helper'
 
 class TestNet < MiniTest::Test
-
     # Runs before each test
     def setup
         @users = [
