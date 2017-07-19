@@ -6,9 +6,7 @@
 </div>
 
 <div class="container">
-
     <div class="row">
-
         <% @products.each do |product| %>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
@@ -17,10 +15,10 @@
                         <h4 class="pull-right">R$20,00</h4>
                         <!-- TODO Adicionar link para o produto -->
                         <h4><a href="#">Por </a></h4>
-                        <p><%= product.caption%></p>
+                        <p><%= product.caption %></p>
                     </div>
                 </div>
             </div>
-        <% end %> 
+        <% end %>
     </div>
 </div>
