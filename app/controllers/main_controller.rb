@@ -1,6 +1,6 @@
 class MainController < ApplicationController
     def index
-        @products = ProductsController.get_first_products[0...6]
+        @products = ProductsController.get_first_products
     end
 
     def about
