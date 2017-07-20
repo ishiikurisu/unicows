@@ -16,4 +16,8 @@ class Image
             raise ArgumentError
         end
     end
+
+    def is_on_sale?
+        (@caption[0] == '[')? !@caption.start_with?('[VENDIDO]') : false
+    end
 end
