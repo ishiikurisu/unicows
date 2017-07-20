@@ -18,6 +18,22 @@ class Image
     end
 
     def is_on_sale?
-        (@caption[0] == '[')? !@caption.start_with?('[VENDIDO]') : false
+        (self.is_product?)? !@caption.start_with?('[VENDIDO]') : false
     end
+
+    def is_product?
+        @caption[0] == '['
+    end
+
+    def title
+        if self.is_product?
+            sold = '[VENDIDO]'
+            caption = (@caption.start_with? sold)? @caption[sold.length..-1] : @caption
+            caption[1...caption.index(']')]
+        else
+            nil
+        end
+    end
+
+    # TODO Implement method to get description
 end

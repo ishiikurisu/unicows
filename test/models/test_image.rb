@@ -67,4 +67,13 @@ class TestImage < MiniTest::Test
         image = Image.new @image_sold
         assert !image.is_on_sale?
     end
+
+    def test_get_title
+        image = Image.new @image_on_sale
+        assert_equal 'SOMETHING', image.title
+        image = Image.new @image_not_on_sale
+        assert image.title.nil?
+        image = Image.new @image_sold
+        assert_equal 'SOME OTHER THING', image.title
+    end
 end
