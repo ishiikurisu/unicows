@@ -13,10 +13,10 @@
                     <div class="thumbnail">
                         <img src="<%= product.image['url']%>" alt="">
                         <div class="caption">
-                            <h4 class="pull-right">R$20,00</h4>
+                            <h4 class="pull-right"><%= "R$ #{product.price},00" %></h4>
                             <!-- TODO Adicionar link para o produto -->
                             <h4><a href="#"><%= product.title %></a></h4>
-                            <p><%= product.caption %></p>
+                            <p><%= product.description %></p>
                         </div>
                     </div>
                 </div>

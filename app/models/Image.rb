@@ -28,8 +28,12 @@ class Image
     def title
         if self.is_product?
             sold = '[VENDIDO]'
-            caption = (@caption.start_with? sold)? @caption[sold.length..-1] : @caption
-            caption[1...caption.index(']')]
+            sale = '[PROMOÇÃO]'
+            caption = (@caption.start_with? sold)? @caption[(1+sold.length)..-1] : @caption
+            caption = (caption.start_with? sale)? caption[sale.length..-1] : caption
+            from = 1 + caption.index('[')
+            to = caption.index ']'
+            caption[from...to]
         else
             nil
         end
@@ -39,7 +43,7 @@ class Image
         if self.is_product?
             price_part = @caption.split('—')[1]
             from = 1 + price_part.index('$')
-            to = price_part.index('.', from)
+            to = price_part.index '.', from
             price_part[from..to].to_i
         else
             nil
@@ -49,9 +53,11 @@ class Image
     def description
         if self.is_product?
             sold = '[VENDIDO]'
+            sale = '[PROMOÇÃO]'
             caption = (@caption.start_with? sold)? @caption[sold.length..-1] : @caption
+            caption = (caption.start_with? sale)? caption[(sale.length)..-1] : caption
             from = 1 + caption.index(']')
-            to = caption.index('—')
+            to = caption.index '—'
             caption[from...to].strip
         else
             @caption.strip
