@@ -46,5 +46,15 @@ class Image
         end
     end
 
-    # TODO Implement method to get description
+    def description
+        if self.is_product?
+            sold = '[VENDIDO]'
+            caption = (@caption.start_with? sold)? @caption[sold.length..-1] : @caption
+            from = 1 + caption.index(']')
+            to = caption.index('—')
+            caption[from...to].strip
+        else
+            @caption.strip
+        end
+    end
 end

@@ -87,4 +87,16 @@ NEGOCIAÇÕES VIA DIRECT' }
         image = Image.new @image_sold
         assert_equal 40, image.price
     end
+
+    def test_get_description
+        sale_description = 'Um show de empoderamento e negritude que vai ficar lindo na sua casa. 💁🏽💁🏾💁🏿'
+        no_sale_description = 'Something is cute anyways'
+        sold_description = 'Esta simpática moça de pele alva se encontra na minha estante há um tempo, mas ela quer mudar de ares e pode ser sua!'
+        image = Image.new @image_on_sale
+        assert_equal sale_description, image.description
+        image = Image.new @image_not_on_sale
+        assert_equal no_sale_description, image.description
+        image = Image.new @image_sold
+        assert_equal sold_description, image.description
+    end
 end
