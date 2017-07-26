@@ -35,5 +35,16 @@ class Image
         end
     end
 
+    def price
+        if self.is_product?
+            price_part = @caption.split('—')[1]
+            from = 1 + price_part.index('$')
+            to = price_part.index('.', from)
+            price_part[from..to].to_i
+        else
+            nil
+        end
+    end
+
     # TODO Implement method to get description
 end

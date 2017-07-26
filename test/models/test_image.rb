@@ -20,7 +20,7 @@ class TestImage < MiniTest::Test
                 'standard_resolution' => nil,
                 'low_resolution' => nil
             },
-            'caption' => { 'text' => '[SOMETHING] Is cute' }
+            'caption' => { 'text' => '[BLACK IS BEAUTIFUL] Um show de empoderamento e negritude que vai ficar lindo na sua casa. 💁🏽💁🏾💁🏿 — R$ 20. NEGOCIAÇÕES VIA DIRECT' }
         }
         @image_not_on_sale = {
             "type" => 'image',
@@ -40,7 +40,9 @@ class TestImage < MiniTest::Test
                 'standard_resolution' => nil,
                 'low_resolution' => nil
             },
-            'caption' => { 'text' => '[VENDIDO][SOME OTHER THING]Something was cute' }
+            'caption' => { 'text' => '[VENDIDO][PERFIL]
+Esta simpática moça de pele alva se encontra na minha estante há um tempo, mas ela quer mudar de ares e pode ser sua! — Acrílica sobre tela, 40x60, R$ 40.
+NEGOCIAÇÕES VIA DIRECT' }
         }
     end
 
@@ -70,10 +72,19 @@ class TestImage < MiniTest::Test
 
     def test_get_title
         image = Image.new @image_on_sale
-        assert_equal 'SOMETHING', image.title
+        assert_equal 'BLACK IS BEAUTIFUL', image.title
         image = Image.new @image_not_on_sale
         assert image.title.nil?
         image = Image.new @image_sold
-        assert_equal 'SOME OTHER THING', image.title
+        assert_equal 'PERFIL', image.title
+    end
+
+    def test_get_price
+        image = Image.new @image_on_sale
+        assert_equal 20, image.price
+        image = Image.new @image_not_on_sale
+        assert image.price.nil?
+        image = Image.new @image_sold
+        assert_equal 40, image.price
     end
 end
