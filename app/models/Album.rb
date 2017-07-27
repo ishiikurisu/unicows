@@ -3,9 +3,9 @@ require_relative '../models/Image.rb'
 
 class Album
     attr_reader :raw
-    attr_reader :products
     attr_reader :pages
     attr_reader :user
+    attr_reader :images
 
     def initialize user, options = { }
         @products = [ ]
@@ -61,6 +61,15 @@ class Album
         end
     end
 
-    # TODO Implement access of individual pages
-    # TODO Implemenet access to individual pictures
+    def get_page page
+        @pages[page]
+    end
+
+    def get_page_images page
+        @pages[page].map { |p| @images[p] }
+    end
+
+    def get_image id
+        @images[id]
+    end
 end

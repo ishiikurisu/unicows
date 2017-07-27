@@ -1,15 +1,16 @@
 require_relative '../helpers/application_helper.rb'
-require_relative '../models/Image.rb'
+require_relative '../models/Album.rb'
 
 class ProductsController < ApplicationController
-    attr_reader :raw
-    attr_reader :products
+    attr_reader :album
 
     # Lists all available products
     def list
-        # TODO Make this line work before the constructor
-        @products = ProductsController.get_first_products
-        # IDEA Implement pagination logic for dealing with access better
+        unless defined? $album
+            $album = Album.new "unicowsstore", :auto => true
+        end
+        # TODO Implement pagination logic
+        @products = $album.get_page_images (request['page'].nil?)? 0 : request['page'].to_i
     end
 
     # Displays a specific product
@@ -19,15 +20,10 @@ class ProductsController < ApplicationController
         @request = request
     end
 
-    # Downloads the first products on the shop.
-    def ProductsController.get_first_products
-        @raw = ApplicationHelper.parse_json(ApplicationHelper.load("https://instagram.com/unicowsstore/media"))
-        @products = [ ]
-        @raw['items'].each do |item|
-            image = Image.new item
-            @products << image
-        end
+    # Downloads the whole catalogue. Returns the first page of products.
+    def ProductsController.download_catalogue
+        $album = Album.new "unicowsstore", :auto => true
         # TODO Download remaining products
-        return @products
+        $album.get_page_images 0
     end
 end
