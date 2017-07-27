@@ -5,35 +5,45 @@ class Album
     attr_reader :raw
     attr_reader :products
     attr_reader :pages
+    attr_reader :user
 
     def initialize user
         @products = [ ]
         @pages = [ ]
         @images = { }
+        @user = user
 
-        raw = ApplicationHelper.parse_json(ApplicationHelper.load("https://instagram.com/#{user}/media"))
-        page = [ ]
-        raw['items'].each do |item|
-            image = Image.new item
-            page << image.id
-            @images[image.id] = image
-        end
+        @raw = query_instagram
+        page = create_page @raw['items']
         @pages << page
+    end
 
-        # TODO Download remaining products
-        Thread.new do
-            while raw['more_available']
-                last_id = @pages[-1][-1].id
-                raw = ApplicationHelper.parse_json(ApplicationHelper.load("https://instagram.com/#{user}/media/?max_id=#{last_id}"))
-                page = [ ]
-                raw['items'].each do |item|
-                    image = Image.new item
-                    page << image.id
-                    @images[image.id] = image
-                end
-                @pages << page
+    def download_more_pages
+        if @raw['more_available']
+            last_id = @pages[-1][-1]
+            @raw = query_instagram last_id
+            page = create_page @raw['items']
+            @pages << page
+        end
+    end
+
+    def create_page items
+        page = [ ]
+        items.each do |item|
+            begin
+                image = Image.new item
+                page << image.id
+                @images[image.id] = image
+            rescue ArgumentError
+
             end
         end
+        page
+    end
+
+    def query_instagram last_id=nil
+        url = "https://instagram.com/#{@user}/media" + ((last_id.nil?)? "" : "?max_id=#{last_id}")
+        ApplicationHelper.parse_json(ApplicationHelper.load(url))
     end
 
     # TODO Implement access of individual pages
