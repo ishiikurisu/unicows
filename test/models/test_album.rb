@@ -30,4 +30,11 @@ class TestAlbum < MiniTest::Test
         page1 = Set.new album.pages[1]
         refute(page0.intersect? page1)
     end
+
+    def test_can_download_remaining_pages_automatically
+        album = Album.new @users[0], :auto => true
+        assert_equal 1, album.pages.length
+        sleep 5
+        assert album.pages.length > 1
+    end
 end
