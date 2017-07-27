@@ -23,7 +23,7 @@ class TestAlbum < MiniTest::Test
     def test_can_download_remaining_pages
         album = Album.new @users[-1]
         assert_equal 1, album.pages.length
-        sleep 5
+        album.download_more_pages
         assert album.pages.length > 1
     end
 end
