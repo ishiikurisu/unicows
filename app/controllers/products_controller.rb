@@ -9,11 +9,14 @@ class ProductsController < ApplicationController
     def list
         # TODO Make this line work before the constructor
         @products = ProductsController.get_first_products
+        # IDEA Implement pagination logic for dealing with access better
     end
 
     # Displays a specific product
     def show
+        # TODO Display product only if their id is valid
         puts "REQUEST: #{request}"
+        @request = request
     end
 
     # Downloads the first products on the shop.

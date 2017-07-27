@@ -1,27 +1,6 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- /*!
-  * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
-  * Copyright 2013-2016 Start Bootstrap
-  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
-  */
-
-/*
 #cea8d2 - pink
-#95519e - puprple
+#95519e - purple
 #c2d8d7 - white
 */
 
@@ -29,6 +8,12 @@
      padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
      font-family: 'Poppins', sans-serif;
      color: #000000;
+     text-align: justify;
+     text-justify: inter-word;
+ }
+
+ a {
+     color: #95519e;
  }
 
 .jumbotron {
@@ -79,6 +64,11 @@
  .thumbnail .caption-full {
      padding: 9px;
      color: #333;
+ }
+
+ .btn-primary {
+     background-color: #95519e;
+     border-color: #95519e;
  }
 
  footer {
