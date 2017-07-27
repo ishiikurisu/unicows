@@ -29,7 +29,7 @@ class Image
         if self.is_product?
             sold = '[VENDIDO]'
             sale = '[PROMOÇÃO]'
-            caption = (@caption.start_with? sold)? @caption[(1+sold.length)..-1] : @caption
+            caption = (@caption.start_with? sold)? @caption[(sold.length)..-1] : @caption
             caption = (caption.start_with? sale)? caption[sale.length..-1] : caption
             from = 1 + caption.index('[')
             to = caption.index ']'
