@@ -16,7 +16,14 @@ class TestAlbum < MiniTest::Test
         @users.each do |user|
             album = Album.new user
             assert album.pages.length >= 1
-            assert (album.pages[0].length >= 0) && (album.pages[0].length <= 12)
+            assert (album.pages[0].length >= 0) && (album.pages[0].length <= 20)
         end
+    end
+
+    def test_can_download_remaining_pages
+        album = Album.new @users[-1]
+        assert_equal 1, album.pages.length
+        sleep 5
+        assert album.pages.length > 1
     end
 end
