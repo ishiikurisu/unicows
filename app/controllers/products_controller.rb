@@ -15,9 +15,8 @@ class ProductsController < ApplicationController
 
     # Displays a specific product
     def show
-        # TODO Display product only if their id is valid
-        puts "REQUEST: #{request}"
-        @request = request
+        id = request['id']
+        @product = $album.get_image id
     end
 
     # Downloads the whole catalogue. Returns the first page of products.

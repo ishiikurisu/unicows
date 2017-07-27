@@ -6,9 +6,12 @@
                     <div class="thumbnail">
                         <img src="<%= product.image['url']%>" alt="">
                         <div class="caption">
-                            <h4 class="pull-right"><%= "R$ #{product.price},00" %></h4>
-                            <!-- TODO Adicionar link para o produto -->
-                            <h4><a href="#"><%= product.title %></a></h4>
+                            <% if product.is_on_sale? %>
+                                <h4 class="pull-right">R$ <%= product.price %>,00</h4>
+                            <% else %>
+                                <h4 class="pull-right">VENDIDO</h4>
+                            <% end %>
+                            <h4><a href="/products/show?id=<%= product.id %>"><%= product.title %></a></h4>
                             <p><%= product.description %></p>
                         </div>
                     </div>
