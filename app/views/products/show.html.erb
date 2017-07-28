@@ -12,16 +12,20 @@
         <div class="col-sm-6 col-lg-6 col-md-6">
             <div class="caption-full">
                 <div class="row">
-                    <% if @product.is_on_sale? %>
-                        <h4 class="pull-right">R$ <%= @product.price %>,00</h4>
-                    <% else %>
-                        <h4 class="pull-right">VENDIDO</h4>
-                    <% end %>
-                    <h4><a href="#"><%= @product.title %></a></h4>
+                    <h4 class="pull-right">
+                        <% if @product.is_on_sale? %>
+                            R$ <%= @product.price %>,00
+                        <% else %>
+                            VENDIDO
+                        <% end %>
+                    </h4>
+                    <h4><%= @product.title %></h4>
                 </div>
                 <p><%= @product.description %></p>
                 <!-- TODO Implementar botão de compra -->
-                <button type="button" class="btn btn-primary">Comprar</button>
+                <% if @product.is_on_sale? %>
+                    <button type="button" class="btn btn-primary">Comprar</button>
+                <% end %>
             </div>
 
             <div class="container">

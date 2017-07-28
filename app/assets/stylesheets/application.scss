@@ -1,20 +1,23 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 /*
 #cea8d2 - pink
 #95519e - purple
 #c2d8d7 - white
 */
 
- body {
-     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-     font-family: 'Poppins', sans-serif;
-     color: #000000;
-     text-align: justify;
-     text-justify: inter-word;
- }
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    text-align: justify;
+    text-justify: inter-word;
+}
 
- a {
-     color: #95519e;
- }
+a {
+    color: #95519e;
+}
 
 .jumbotron {
     background-color: #cea8d2;
@@ -25,52 +28,52 @@
     // TODO Change link color
 }
 
- .slide-image {
-     width: 100%;
- }
+.slide-image {
+    width: 100%;
+}
 
- .carousel-holder {
-     margin-bottom: 30px;
- }
+.carousel-holder {
+    margin-bottom: 30px;
+}
 
- .carousel-control,
- .item {
-     border-radius: 4px;
- }
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
 
- .caption {
-     height: 130px;
-     overflow: hidden;
- }
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
 
- .caption h4 {
-     white-space: nowrap;
- }
+.caption h4 {
+    white-space: nowrap;
+}
 
- .thumbnail img {
-     width: 100%;
- }
+.thumbnail img {
+    width: 100%;
+}
 
- .ratings {
-     padding-right: 10px;
-     padding-left: 10px;
-     color: #d17581;
- }
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
 
- .thumbnail {
-     padding: 0;
- }
+.thumbnail {
+    padding: 0;
+}
 
- .thumbnail .caption-full {
-     padding: 9px;
-     color: #333;
- }
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
 
- .btn-primary {
-     background-color: #95519e;
-     border-color: #95519e;
- }
+.btn-primary {
+    background-color: #95519e;
+    border-color: #95519e;
+}
 
- footer {
+footer {
      margin: 50px 0;
- }
+}

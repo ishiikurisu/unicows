@@ -17,6 +17,12 @@ class ProductsController < ApplicationController
     def show
         id = request['id']
         @product = $album.get_image id
+        if @product.nil?
+            redirect_to '/products/not_found'
+        end
+    end
+
+    def not_found
     end
 
     # Downloads the whole catalogue. Returns the first page of products.
