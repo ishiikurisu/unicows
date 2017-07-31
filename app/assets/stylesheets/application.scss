@@ -28,6 +28,19 @@ a {
     // TODO Change link color
 }
 
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
 .slide-image {
     width: 100%;
 }
