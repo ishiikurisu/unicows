@@ -81,6 +81,9 @@ GEM
       mini_portile2 (~> 2.2.0)
     nokogiri (1.8.0-x64-mingw32)
       mini_portile2 (~> 2.2.0)
+    paypal-sdk-rest (1.6.0)
+      multi_json (~> 1.0)
+      xml-simple
     pg (0.21.0)
     pg (0.21.0-x64-mingw32)
     rack (2.0.3)
@@ -155,6 +158,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -166,6 +170,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
+  paypal-sdk-rest
   pg
   rails (~> 5.0.4)
   rainbows-rails (~> 1.0, >= 1.0.1)
