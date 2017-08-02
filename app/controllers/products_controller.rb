@@ -21,15 +21,18 @@ class ProductsController < ApplicationController
             redirect_to '/products/not_found'
         end
 
-        case @product.price
-        when 15
-            @price_code = '8FBD629E1717F39AA4D30FA501C58C98'
-        when 20
-            @price_code = '411EBE215050855114CC4F9102F2752C'
-        when 40
-            @price_code = '003E24DE808080E554CC9F810CD6692D'
-        else
-            redirect_to '/products/not_found'
+        @price_code = nil
+        if @product.is_on_sale?
+            case @product.price
+            when 15
+                @price_code = '8FBD629E1717F39AA4D30FA501C58C98'
+            when 20
+                @price_code = '411EBE215050855114CC4F9102F2752C'
+            when 40
+                @price_code = '003E24DE808080E554CC9F810CD6692D'
+            else
+                redirect_to '/products/not_found'
+            end
         end
     end
 
