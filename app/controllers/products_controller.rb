@@ -20,8 +20,20 @@ class ProductsController < ApplicationController
         if @product.nil?
             redirect_to '/products/not_found'
         end
+
+        case @product.price
+        when 15
+            @price_code = '8FBD629E1717F39AA4D30FA501C58C98'
+        when 20
+            @price_code = '411EBE215050855114CC4F9102F2752C'
+        when 40
+            @price_code = '003E24DE808080E554CC9F810CD6692D'
+        else
+            redirect_to '/products/not_found'
+        end
     end
 
+    # Page to display when something didn't happen quite right.
     def not_found
     end
 

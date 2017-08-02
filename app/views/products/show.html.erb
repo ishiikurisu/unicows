@@ -22,9 +22,15 @@
                     <h4><%= @product.title %></h4>
                 </div>
                 <p><%= @product.description %></p>
-                <!-- TODO Implementar botão de compra -->
                 <% if @product.is_on_sale? %>
-                    <button type="button" class="btn btn-primary">Comprar</button>
+                    <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+                    <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
+                    <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+                    <input type="hidden" name="code" value="<%= @price_code %>" />
+                    <input type="hidden" name="iot" value="button" />
+                    <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/205x30-comprar-roxo.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+                    </form>
+                    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
                 <% end %>
             </div>
 
