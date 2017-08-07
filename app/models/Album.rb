@@ -72,4 +72,8 @@ class Album
     def get_image id
         @images[id]
     end
+
+    def how_many_pages
+        @pages.length
+    end
 end

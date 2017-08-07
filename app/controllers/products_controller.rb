@@ -9,8 +9,13 @@ class ProductsController < ApplicationController
         unless defined? $album
             $album = Album.new "unicowsstore", :auto => true
         end
-        # TODO Implement pagination logic
-        @products = $album.get_page_images (request['page'].nil?)? 0 : request['page'].to_i
+        @limit = $album.how_many_pages - 1
+        @page = (request['page'].nil?)? 0 : request['page'].to_i - 1
+        if (0 <= @page) && (@page <= @limit)
+            @products = $album.get_page_images @page
+        else
+            redirect_to '/products/not_found'
+        end
     end
 
     # Displays a specific product
@@ -43,7 +48,6 @@ class ProductsController < ApplicationController
     # Downloads the whole catalogue. Returns the first page of products.
     def ProductsController.download_catalogue
         $album = Album.new "unicowsstore", :auto => true
-        # TODO Download remaining products
         $album.get_page_images 0
     end
 end
