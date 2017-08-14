@@ -10,30 +10,32 @@
         <div class="container">
             <div class="row carousel-holder">
 
-                <div class="col-md-12">
+                <div class="col-md-offset-3 col-md-6">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                <img class="slide-image" src="<%= @images[0] %>" alt="">
                             </div>
                             <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                <img class="slide-image" src="<%= @images[1] %>" alt="">
                             </div>
                             <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                <img class="slide-image" src="<%= @images[2] %>" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="<%= @images[3] %>" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="<%= @images[4] %>" alt="">
                             </div>
                         </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
                     </div>
                 </div>
 
@@ -41,7 +43,21 @@
         </div>
 
         <div class="container">
-            Why not?
+            <h2>Sobre nós</h2>
+            <p>
+                Sabe aquela decoração que a sua casa poderia ter que as pessoas adivinhariam que aquele é o seu lugar mesmo que você não esteja lá?
+            </p>
+            <p>
+                Pois é, quase nunca encontramos uma loja para este tipo de item, se você é como nós. Somos daqueles que pensam que as nossas crenças e os nossos gostos nos definem ao ponto de que não temos motivo para nos envergonhar quando mostramos quem nós somos. Sendo assim, nada mais justo do que o nosso próprio lar ter a nossa cara e ser capaz de falar por nós. Afinal de contas, somos nós que habitamos debaixo daquele teto e, se não ele não nos fará sentirmos acolhidos, quem vai?
+            </p>
+            <p>
+                Foi pensando nisto que a Unicows foi fundada. Queremos que todos tenham acesso a arte e a decoração. Mais ainda, queremos que todos tenham acesso a arte e a decoração que faça jus a quem você é, para que não seja somente mais um quadro para preencher espaço na parede da sua casa. Que aquele vazio abra as portas para algo que fale por você quando suas visitas cheguem, e que fale para você quando você estiver consigo mesmo.
+            </p>
+
+            <h2>Como trabalhamos</h2>
+            <p>
+                Atualmente, vendemos pinturas e pôsteres, tanto produção própria como por encomenda por mensagem direta em nosso <a href="https://www.instagram.com/unicowsstore/">Instagram</a> ou pelo nosso <a href="mailto:unicowsstore@gmail.com">E-mail</a>. Nossa loja é totalmente virtual e enviamos os produtos por Correios.
+            </p>
         </div>
     </div>
 </div>
