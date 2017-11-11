@@ -12,4 +12,14 @@ module ApplicationHelper
     def ApplicationHelper.parse_json inlet
         JSON.parse inlet
     end
+
+    public
+    def ApplicationHelper.each_slice a, length
+        inlet = Array.new a
+        outlet = []
+        while inlet.length > 0
+            outlet << inlet.pop(length)
+        end
+        return outlet
+    end
 end

@@ -7,12 +7,12 @@ class ProductsController < ApplicationController
     # Lists all available products
     def list
         unless defined? $album
-            $album = Album.new "unicowsstore", :auto => true
+            $album = Album.new
         end
-        @limit = $album.how_many_pages - 1
+        @limit = $album.pages.length - 1
         @page = (request['page'].nil?)? 0 : request['page'].to_i - 1
         if (0 <= @page) && (@page <= @limit)
-            @products = $album.get_page_images @page
+            @products = $album.pages[@page]
         else
             redirect_to '/products/not_found'
         end
@@ -20,24 +20,13 @@ class ProductsController < ApplicationController
 
     # Displays a specific product
     def show
-        id = request['id']
+        unless defined? $album
+            $album = Album.new
+        end
+        id = request['id'].to_i
         @product = $album.get_image id
         if @product.nil?
             redirect_to '/products/not_found'
-        end
-
-        @price_code = nil
-        if @product.is_on_sale?
-            case @product.price
-            when 15
-                @price_code = '8FBD629E1717F39AA4D30FA501C58C98'
-            when 20
-                @price_code = '411EBE215050855114CC4F9102F2752C'
-            when 40
-                @price_code = '003E24DE808080E554CC9F810CD6692D'
-            else
-                redirect_to '/products/not_found'
-            end
         end
     end
 

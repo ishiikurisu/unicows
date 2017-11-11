@@ -4,7 +4,7 @@
         <!-- TODO Add actual image -->
         <div class="col-sm-6 col-lg-6 col-md-6">
             <div class="thumbnail">
-                <img class="img-responsive" src="<%= @product.image['url'] %>" alt="">
+                <img class="img-responsive" src="<%= @product.image %>" alt="">
             </div>
         </div>
 
@@ -19,22 +19,19 @@
                             VENDIDO
                         <% end %>
                     </h4>
-                    <h4><%= @product.title %></h4>
+                    <h4><%= @product.name %></h4>
                 </div>
-                <p><%= @product.description %></p>
+                <p><%= @product.caption %></p>
                 <% if @product.is_on_sale? %>
                     <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
                     <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
                     <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                    <input type="hidden" name="code" value="<%= @price_code %>" />
+                    <input type="hidden" name="code" value="<%= @product.code %>" />
                     <input type="hidden" name="iot" value="button" />
                     <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/205x30-comprar-roxo.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
                     </form>
                     <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
                 <% end %>
-            </div>
-
-            <div class="container">
             </div>
         </div>
     </div>
