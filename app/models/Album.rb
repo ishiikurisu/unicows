@@ -6,7 +6,7 @@ class Album
 
     def initialize
         @images = [ ]
-        @worksheet = Drive.download_worksheet('Produtos').rows
+        @worksheet = DriveHelper.download_worksheet('Produtos').rows
         @tags = @worksheet[0]
         @worksheet[1..-1].each do |row|
             info = { }
