@@ -8,8 +8,9 @@ class Album
         @images = [ ]
         @worksheet = DriveHelper.download_worksheet('Produtos').rows
         @tags = @worksheet[0]
-        @worksheet[1..-1].each do |row|
-            info = { }
+        @worksheet[1..-1].each_index do |line|
+            row = @worksheet[line]
+            info = { 'id' => line }
             @tags.each_index do |index|
                 tag = @tags[index]
                 info[tag] = row[index]

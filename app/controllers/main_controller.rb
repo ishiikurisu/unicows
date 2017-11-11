@@ -1,10 +1,15 @@
 class MainController < ApplicationController
     def index
-        @products = ProductsController.download_catalogue
+        unless defined? $album
+            $album = Album.new
+        end
+        @products = $album.images.take 6
     end
 
     def about
-        @images = $album.get_page_images(0).take(5).map { |i| i.image['url'] }
-        p @images
+        unless defined? $album
+            $album = Album.new
+        end
+        @images = $album.images.take 3
     end
 end

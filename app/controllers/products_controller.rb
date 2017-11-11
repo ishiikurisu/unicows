@@ -44,10 +44,4 @@ class ProductsController < ApplicationController
     # Page to display when something didn't happen quite right.
     def not_found
     end
-
-    # Downloads the whole catalogue. Returns the first page of products.
-    def ProductsController.download_catalogue
-        $album = Album.new "unicowsstore", :auto => true
-        $album.get_page_images 0
-    end
 end
