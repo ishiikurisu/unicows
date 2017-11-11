@@ -1,40 +1,28 @@
 require "minitest/autorun"
 require "set"
-require_relative "../../app/helpers/application_helper"
-require_relative "../../app/models/Image"
 require_relative "../../app/models/Album"
 
 class TestAlbum < MiniTest::Test
     # Runs before each test
     def setup
-        @users = [
-            'crisjoejr',
-            '_boxofjoe_'
-        ]
+        @album = Album.new
     end
 
-    def test_can_download_first_page
-        @users.each do |user|
-            album = Album.new user
-            assert album.pages.length >= 1
-            assert((album.pages[0].length >= 0) && (album.pages[0].length <= 20))
+    def test_can_organize_images_in_album_by_name
+        pictures = ['neko atsume', 'overwatch', 'fifa 18']
+        @album.images.each do |product|
+            pictures.delete product.name
         end
+        assert_equal 0, pictures.length
     end
 
-    def test_can_download_remaining_pages
-        album = Album.new @users[0]
-        assert_equal 1, album.pages.length
-        album.download_more_pages
-        assert album.pages.length > 1
-        page0 = Set.new album.pages[0]
-        page1 = Set.new album.pages[1]
-        refute(page0.intersect? page1)
+    def test_can_organize_images_in_album_by_price
+        pictures = [15, 20, 40]
+        @album.images.each do |product|
+            pictures.delete product.price
+        end
+        assert_equal 0, pictures.length
     end
 
-    def test_can_download_remaining_pages_automatically
-        album = Album.new @users[0], :auto => true
-        assert_equal 1, album.pages.length
-        sleep 5
-        assert album.pages.length > 1
-    end
+    # TODO Test if products are on sale
 end

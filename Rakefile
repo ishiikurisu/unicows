@@ -10,4 +10,5 @@ task :default => [:tdd]
 desc "Runs unit tests"
 task :tdd do
     puts `rails test ./test/helpers/test_drive.rb`
+    puts `rails test ./test/models/test_album.rb`
 end
