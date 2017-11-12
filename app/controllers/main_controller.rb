@@ -3,7 +3,7 @@ class MainController < ApplicationController
         unless defined? $album
             $album = Album.new
         end
-        @products = $album.images.take 6
+        @products = $album.images.reverse.take 6
     end
 
     def about
